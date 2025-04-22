@@ -17,4 +17,11 @@ public class GestoreEccezioni
 	{
 		return e.getMessage();
 	}
+
+	@ExceptionHandler(TagliaNonEsistenteException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public String gestisciTagliaInesistente(TagliaNonEsistenteException e)
+	{
+		return e.getMessage();
+	}
 }
