@@ -1,4 +1,4 @@
-package com.generation.templaterest;
+package com.generation.templaterest.controllers;
 
 import com.generation.templaterest.controllers.exceptions.MostroInesistenteException;
 import com.generation.templaterest.controllers.exceptions.TagliaNonEsistenteException;
@@ -6,8 +6,6 @@ import com.generation.templaterest.model.dao.MostroDao;
 import com.generation.templaterest.model.dao.TagliaDao;
 import com.generation.templaterest.model.entities.Mostro;
 import com.generation.templaterest.model.entities.Taglia;
-import org.apache.catalina.core.ApplicationContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
