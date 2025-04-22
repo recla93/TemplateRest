@@ -4,6 +4,7 @@ import com.generation.templaterest.model.entities.enums.Pericolosita;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,11 +15,12 @@ import java.util.List;
 public abstract class Mostro extends BaseEntity
 {
 	private String nome,ubicazione;
+
 	@Enumerated(EnumType.STRING)
 	private Pericolosita pericolosita;
 
 	@OneToMany(mappedBy = "bersaglio",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	private List<Taglia> taglie;
+	private List<Taglia> taglie = new ArrayList<>();
 
 	public boolean isAbbattuto()
 	{
