@@ -1,5 +1,6 @@
 package com.generation.templaterest.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,5 +18,6 @@ public class Taglia extends BaseEntity
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_bersaglio")
+	@JsonIgnore //con questo non mettiamo i dati del padre nel json della taglia
 	private Mostro bersaglio;
 }

@@ -1,10 +1,12 @@
 package com.generation.templaterest.controllers;
 
+import com.generation.templaterest.controllers.exceptions.MostroInesistenteException;
 import com.generation.templaterest.model.dao.DragoDao;
 import com.generation.templaterest.model.entities.Drago;
 import com.generation.templaterest.model.entities.Mostro;
 import com.generation.templaterest.model.entities.enums.Elemento;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class DragoController
 	}
 
 	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
 	public Drago insert(@RequestBody Drago d)
 	{
 		d = dao.save(d);
@@ -55,6 +58,10 @@ public class DragoController
 	public Drago delete(@PathVariable Long id)
 	{
 		Drago d = dao.findById(id).orElse(null);
+
+		if(d==null)
+			throw new MostroInesistenteException("Il drago con id "+id+" non esiste");
+
 		dao.delete(d);
 
 		return d;
